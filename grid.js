@@ -1,4 +1,4 @@
-// <- original array
+// <- random original array --> 
 var n = getRandomInt(25); //<- original array length
 if (n === 0)
     n = 10;
@@ -72,9 +72,8 @@ const printFinalResult = (maxCount) => {
 const entry = (i, j, el, evenyType) => {
     resetAllValues();
     pushInitialElement(i, j);
-    //setElementToVisited(i,j);
     if (isEmptyBlock(i, j)) {
-        return
+        return;
     }
     while (hasMoreElements()) {
         let topElement = getTopOfStack();
@@ -87,13 +86,12 @@ const entry = (i, j, el, evenyType) => {
         }
     }
     printFinalResult(finalCount.length);
-    console.log(finalCount);
 }
 const isEmptyBlock = (i, j) => (gridInput[i][j] === 0)
 const pushInitialElement = (i, j) => temparr.push({ i: i, j: j })
 const isVisited = (i, j) => visitedArr[i][j];
-const pushToTempArr = (i, j) => { if (isValid(i, j)) temparr.push({ i: i, j: j }) }
 
+const pushToTempArr = (i, j) => { if (isValid(i, j)) temparr.push({ i: i, j: j }) }
 const tryLeft = (i, j) => { j--; pushToTempArr(i, j); }
 const tryRight = (i, j) => { j++; pushToTempArr(i, j); }
 const tryTop = (i, j) => { i--; pushToTempArr(i, j); }
@@ -135,7 +133,6 @@ function clickableGrid(rows, cols, callback) {
                 cell.className = 'block';
                 i = 1;
             } else i = 0;
-            // cell.innerHTML = gridInput[r][c];
             cell.addEventListener('click', (function (el, r, c, i) {
                 return function () {
                     callback(el, r, c, i, "click");
